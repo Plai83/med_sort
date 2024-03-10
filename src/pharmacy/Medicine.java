@@ -17,26 +17,23 @@ public class Medicine implements Iterator<MedicineComponent>, Comparable<Medicin
 
     public float getAllWeight() {
         float allWeight = 0;
-        for (Medicine it = this; it.hasNext(); ) {
-            MedicineComponent i = it.next();
-            allWeight += i.getWeight();
+        for(MedicineComponent component: this.components) {
+            allWeight += component.getWeight();
         }
         return allWeight;
     }
 
     public int getAllPower() {
-        int allPower = 0;
-        for (Medicine it = this; it.hasNext(); ) {
-            MedicineComponent i = it.next();
-            allPower += i.getPower();
+        int totalPower = 0;
+        for(MedicineComponent component: this.components) {
+            totalPower += component.getPower();
         }
-        return allPower;
+        return totalPower;
     }
 
     public int getSize() {
         int size = 0;
-        for (Medicine it = this; it.hasNext(); ) {
-            MedicineComponent i = it.next();
+        for(MedicineComponent component: this.components) {
             size += 1;
         }
         return size;
@@ -61,7 +58,8 @@ public class Medicine implements Iterator<MedicineComponent>, Comparable<Medicin
 
     @Override
     public int compareTo(Medicine o) {
-        return Integer.compare(this.getAllPower(), o.getAllPower());
+       return Integer.compare(this.getAllPower(), o.getAllPower());
+
     }
 
 }
